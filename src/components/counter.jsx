@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  state = { value: this.props.value, tags: ["tag1", "tag2", "tag3"] };
+  state = { value: this.props.counter.value };
 
   //   constructor() {
   //     super();
   //     this.handleIncrement = this.handleIncrement.bind(this);
   //   }
   handleIncrement = () => this.setState({ value: this.state.value + 1 });
-
   render() {
     return (
       <div>
@@ -22,12 +21,19 @@ class Counter extends Component {
         >
           increment
         </button>
+        <button
+          className="btn btn-danger btn-sm m2"
+          onClick={() => this.props.onDelete(this.props.counter.id)}
+        >
+          <button className="primary" />
+          Delete
+        </button>
       </div>
     );
   }
 
   renderTags() {
-    if (this.state.tags.length == 0) {
+    if (this.state.tags.length === 0) {
       return <p>there are no tags</p>;
     } else {
       return (
